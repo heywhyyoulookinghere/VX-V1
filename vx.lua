@@ -64,3 +64,5 @@ game.Players.LocalPlayer.Chatted:Connect(function(chat)
         sendnotif(game.Players:FindFirstChild(checkifplayer[2].." is awesome")
     end
 end)
+
+sendnotif("VX-V1 successfully loaded.")
