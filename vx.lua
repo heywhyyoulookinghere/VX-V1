@@ -6,6 +6,8 @@ local function command(msg)
     chatbox.Text = ""
 end
 
+local say = function(...)game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(...,"All")end
+
 local prefix = "-"
 
 function checkifplayer(input)
@@ -66,7 +68,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(chat)
 
 	if lower == prefix.."compliment" then
 		if game.Players:FindFirstChild(checkifplayer(split[2])) then
-			command("h "..(checkifplayer(split[2]).." is awesome"))
+			say(checkifplayer(split[2]).." is awesome"))
 		else
 			sendnotif(checkifplayer(split[2]))
 		end
