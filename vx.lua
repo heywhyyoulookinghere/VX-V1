@@ -69,7 +69,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(chat)
 	if lower == prefix.."compliment" then
 		if game.Players:FindFirstChild(checkifplayer(split[2])) then
 		    wait(0.3)
-			chat(checkifplayer(split[2]).." is awesome")
+			say(checkifplayer(split[2]).." is awesome")
 		else
 			sendnotif(checkifplayer(split[2]))
 		end
