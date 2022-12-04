@@ -1,5 +1,12 @@
-local command = function(...)game.Players:Chat(...)end
-local chat = function(...)game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(...,"All")end
+local chatbox = game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
+
+local function say(msg)
+    chatbox:SetTextFromInput(msg)
+    game.Players:Chat(msg)
+    chatbox.Text = ""
+end
+
+local say = function(...)game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(...,"All")end
 
 local prefix = "-"
 
@@ -61,6 +68,7 @@ game.Players.LocalPlayer.Chatted:Connect(function(chat)
 
 	if lower == prefix.."compliment" then
 		if game.Players:FindFirstChild(checkifplayer(split[2])) then
+		    wait(0.3)
 			chat(checkifplayer(split[2]).." is awesome")
 		else
 			sendnotif(checkifplayer(split[2]))
@@ -74,6 +82,8 @@ game.Players.LocalPlayer.Chatted:Connect(function(chat)
 	
 	if lower == prefix.."prefix" then
 		prefix = split[2]
+		wait(0.3)
+		sendnotif("Prefix set to "..split[2])
 	end
 end)
 
